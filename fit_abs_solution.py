@@ -1,4 +1,4 @@
-#! usrt/bin/python
+#! usr/bin/python
 
 import scipy, pymc
 import numpy as np

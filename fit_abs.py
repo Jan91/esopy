@@ -1,4 +1,4 @@
-#! usrt/bin/python
+#! usr/bin/python
 
 import scipy, pymc
 import numpy as np
@@ -86,12 +86,12 @@ gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 #	MDL = pymc.MCMC(...,db='pickle',dbname='results.pickle')
 #
 #	MDL.db
-#	MDL.sample(20000, 0)
+#	MDL.sample()
 #	MDL.db.close()
 #
 #	y_fit = MDL.stats()['add_voigt']['mean']
 #
-#	return y_max
+#	return
 
 
 
