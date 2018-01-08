@@ -14,7 +14,7 @@ e = 4.8032E-10  # cm 3/2 g 1/2 s-1
 c = 2.998e10 # speed of light cm/s
 m_e = 9.10938291e-28 # electron mass g
 
-l0_CrII2056 = 2056.
+l0_CrII2056 = 2056.2568
 f_CrII2056 = 0.103 #oscillator strength
 gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 
