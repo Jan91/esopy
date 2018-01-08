@@ -22,7 +22,7 @@ gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 # Load the data from the data.csv file using pandas
 # -> save the velocity, the flux, and the flux error in three individual lists
 # (i.e. as a pandas.Series: One-dimensional ndarray with axis labels)
-# https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html#pandas.read_csv
+# https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html
 
 #velocity = ?
 #flux = ?

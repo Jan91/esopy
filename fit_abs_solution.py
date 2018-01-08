@@ -22,7 +22,7 @@ gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 
 
 # Load the data from the data.csv file
-# https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html#pandas.read_csv
+# https://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html
 df = pd.read_csv("data.csv", header=0, sep=', ', index_col=None)
 
 print(df)
