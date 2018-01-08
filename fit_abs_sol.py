@@ -10,7 +10,7 @@ from pylab import *
 
 from scipy.special import wofz
 
-e = 4.8032E-10  # cm 3/2 g 1/2 s-1
+e = 4.8032E-10  # cm**3/2 g**1/2 s**-1
 c = 2.998e10 # speed of light cm/s
 m_e = 9.10938291e-28 # electron mass g
 
@@ -22,6 +22,8 @@ gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 # Load the data fro the data.csv file
 # https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.from_csv.html
 df = pd.DataFrame.from_csv("data.csv", header=0, sep=', ', index_col=None)
+
+print(df)
 
 def voigt(x, sigma, gamma):
 	'''
@@ -55,6 +57,9 @@ def model(velocity, flux, flux_err):
 	b  = pymc.Normal('b',mu=15.0,tau=1.0/(10**2), doc='b')
 	BG = pymc.Normal('BG',mu=1.0,tau=1./(0.05*2), doc='BG')
 
+	#x errors
+	#velocity_w_err = pymc.Normal('velocity', mu=velocity, tau=1/0.5**2)
+
 	@pymc.deterministic(plot=False) #Deterministic Decorator
 	def add_voigt(velocity=velocity,N=N,b=b,v0=v0, BG=BG):
 
@@ -75,22 +80,29 @@ def mcmc(velocity, flux, flux_err):
 		db='pickle',dbname='results.pickle')
 
 	MDL.db
-	MDL.sample(20000, 0)
+	MDL.sample(10000, 5000)
 	MDL.db.close()
 
 	y_min = MDL.stats()['add_voigt']['quantiles'][2.5]
 	y_max = MDL.stats()['add_voigt']['quantiles'][97.5]
 	y_fit = MDL.stats()['add_voigt']['mean']
 
+	N_mean, N_SD = MDL.stats()['N']['mean'], MDL.stats()['N']['standard deviation']
+	b_mean, b_SD = MDL.stats()['b']['mean'], MDL.stats()['b']['standard deviation']
+
+	print(N_mean, N_SD)
+	print(b_mean, b_SD)
+
 	return y_fit, y_min, y_max
-
-
 
 
 y_fit, y_min, y_max, = mcmc(df['velocity'], df['flux'], df['flux_err'])
 
 
+fill_between(df['velocity'],y_min,y_max,color='black',alpha=0.3)
 errorbar(df['velocity'], df['flux'], yerr=df['flux_err'], fmt="o")
+
+
 plot(df['velocity'], y_fit)
 show()
 
