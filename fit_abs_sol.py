@@ -8,6 +8,8 @@ import matplotlib as plt
 import matplotlib.pyplot as pyplot
 from pylab import *
 
+
+
 from scipy.special import wofz
 
 e = 4.8032E-10  # cm**3/2 g**1/2 s**-1
@@ -102,7 +104,6 @@ y_fit, y_min, y_max, = mcmc(df['velocity'], df['flux'], df['flux_err'])
 fill_between(df['velocity'],y_min,y_max,color='black',alpha=0.3)
 errorbar(df['velocity'], df['flux'], yerr=df['flux_err'], fmt="o")
 
-
 plot(df['velocity'], y_fit)
 show()
 
@@ -126,9 +127,27 @@ axes[3].set_xlabel("Iterations")
 
 show()
 
+import seaborn as sns
 
+sns.set_style("white")
+sns.set_style("ticks")
+sns.set_context("talk")
 
+data_f = {}
+data_f['N'] = df['N'][0]
+data_f['b'] = df['b'][0]
 
+df = pd.DataFrame(data_f)
+
+g = sns.PairGrid(df) 
+g.map_upper(sns.kdeplot, cmap="bone_r",n_levels=10,shade=True,
+	shade_lowest=False)
+g.map_lower(sns.kdeplot, cmap="bone_r",n_levels=10,shade=True,
+	shade_lowest=False)
+#g.map_diag(sns.kdeplot, lw=2);
+g.map_diag(plt.hist)
+
+show()
 
 
 

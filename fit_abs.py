@@ -20,8 +20,13 @@ gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 
 
 # Load the data fro the data.csv file
+# save the velocity, the flux, and the flux error in three individual lists
+# (i.e. as a pandas.Series: One-dimensional ndarray with axis labels)
 # https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.from_csv.html
-#df = pd.DataFrame.from_csv()
+
+#velocity = ?
+#flux = ?
+#flux_err = ? 
 
 
 #def voigt(x, sigma, gamma):
@@ -36,8 +41,10 @@ gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 #	z = (x + 1j*gamma) / (sigma * np.sqrt(2.0))
 #	V = wofz(z).real / (sigma * np.sqrt(2.0*np.pi))
 #	return V
-#
-#
+
+
+# finish defining the add_abs_velo() function
+
 #def add_abs_velo(v, N, b, gamma, f, l0):
 #	'''
 #	Add absorption line l0 in velocity space v, given the oscillator strength,
@@ -48,8 +55,14 @@ gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 #
 #	
 #	return np.exp(-tau)
-#
-#
+
+
+
+# finish defining model() function
+# add the other 3 priors (N, b, BG)
+# finish defining the data (y_val = pymc.Normal())
+
+
 #def model(velocity, flux, flux_err):
 #
 #	v0 = pymc.Uniform('v0',lower=-400,upper=400, doc='v0')
@@ -64,8 +77,10 @@ gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 #	y_val = pymc.Normal()
 #
 #	return locals()
-#
-#
+
+
+# finish defining the mcmc() function
+
 #def mcmc(velocity, flux, flux_err):
 #
 #	MDL = pymc.MCMC(...,db='pickle',dbname='results.pickle')
@@ -79,6 +94,8 @@ gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 #	return y_max
 
 
+
+# try to plot the results
 
 
 
