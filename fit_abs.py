@@ -65,8 +65,10 @@ gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 
 #def model(velocity, flux, flux_err):
 #
+# 	#priors:
 #	v0 = pymc.Uniform('v0',lower=-400,upper=400, doc='v0')
 #
+# 	# pyhsical model:
 #	@pymc.deterministic(plot=False) #Deterministic Decorator
 #	def add_voigt(velocity=velocity,N=N,b=b,v0=v0, BG=BG):
 #
