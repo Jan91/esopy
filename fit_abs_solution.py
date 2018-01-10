@@ -55,8 +55,8 @@ def add_abs_velo(v, N, b, gamma, f, l0):
 def model(velocity, flux, flux_err):
 
 	v0 = pymc.Uniform('v0',lower=-400,upper=400, doc='v0')
-	N  = pymc.Normal('N',mu=15.0,tau=1.0/(10**2), doc='N')
-	b  = pymc.Normal('b',mu=15.0,tau=1.0/(10**2), doc='b')
+	N  = pymc.Normal('N',mu=15.0,tau=1.0/(10.**2), doc='N')
+	b  = pymc.Normal('b',mu=15.0,tau=1.0/(10.**2), doc='b')
 	BG = pymc.Normal('BG',mu=1.0,tau=1./(0.05*2), doc='BG')
 
 	#x errors
@@ -99,7 +99,6 @@ def mcmc(velocity, flux, flux_err):
 
 
 y_fit, y_min, y_max, = mcmc(df['velocity'], df['flux'], df['flux_err'])
-
 
 fill_between(df['velocity'],y_min,y_max,color='black',alpha=0.3)
 errorbar(df['velocity'], df['flux'], yerr=df['flux_err'], fmt="o")

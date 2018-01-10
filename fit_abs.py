@@ -14,7 +14,7 @@ e = 4.8032E-10  # cm 3/2 g 1/2 s-1
 c = 2.998e10 # speed of light cm/s
 m_e = 9.10938291e-28 # electron mass g
 
-l0_CrII2056 = 2056.2568
+l0_CrII2056 = 2056.2568 # wavelength in Angstrom 
 f_CrII2056 = 0.103 #oscillator strength
 gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 
@@ -68,7 +68,7 @@ gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 # 	#priors:
 #	v0 = pymc.Uniform('v0',lower=-400,upper=400, doc='v0')
 #
-# 	# pyhsical model:
+# 	#pyhsical model:
 #	@pymc.deterministic(plot=False) #Deterministic Decorator
 #	def add_voigt(velocity=velocity,N=N,b=b,v0=v0, BG=BG):
 #
@@ -85,16 +85,17 @@ gamma_CrII2056 = 0.133196217632 # damping constant in km/s
 
 #def mcmc(velocity, flux, flux_err):
 #
-#	MDL = pymc.MCMC(...,db='pickle',dbname='results.pickle')
+#	MDL = pymc.MCMC(,db='pickle',dbname='results.pickle')
 #
 #	MDL.db
 #	MDL.sample()
 #	MDL.db.close()
 #
 #	y_fit = MDL.stats()['add_voigt']['mean']
+#	y_min = ?
+#	y_max = ?
 #
 #	return
-
 
 
 # try to plot the results
