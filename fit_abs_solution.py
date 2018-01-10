@@ -104,6 +104,9 @@ y_fit, y_min, y_max, = mcmc(df['velocity'], df['flux'], df['flux_err'])
 fill_between(df['velocity'],y_min,y_max,color='black',alpha=0.3)
 errorbar(df['velocity'], df['flux'], yerr=df['flux_err'], fmt="o")
 
+xlabel("Relative Velocity (km/s)")
+ylabel("Normalized Flux")
+
 plot(df['velocity'], y_fit)
 show()
 
